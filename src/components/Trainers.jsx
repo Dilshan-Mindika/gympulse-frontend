@@ -102,4 +102,32 @@ function Trainers() {
     trainer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
     trainer.speciality.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  return (
+    <div className="space-y-6">
+      <div className="flex justify-between items-center">
+        <div className="flex items-center space-x-3">
+          <FaUserTie className="text-2xl text-blue-600" />
+          <h2 className="text-2xl font-bold text-gray-800">Trainers</h2>
+        </div>
+        <button
+          onClick={() => setShowForm(true)}
+          className="btn btn-primary"
+        >
+          Add New Trainer
+        </button>
+      </div>
+
+      {/* Search Bar */}
+      <div className="relative">
+        <FaSearch className="absolute left-3 top-3 text-gray-400" />
+        <input
+          type="text"
+          placeholder="Search trainers by name, email, or speciality..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="input pl-10"
+        />
+      </div>
+
 }
