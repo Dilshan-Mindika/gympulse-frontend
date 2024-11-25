@@ -19,3 +19,16 @@ function Trainers() {
     salary: '',
     certificationNumber: ''
   });
+
+  useEffect(() => {
+    fetchTrainers();
+  }, []);
+
+  const fetchTrainers = async () => {
+    try {
+      const response = await api.get('/Trainers');
+      setTrainers(response.data);
+    } catch (error) {
+      toast.error('Error fetching trainers');
+    }
+  };
