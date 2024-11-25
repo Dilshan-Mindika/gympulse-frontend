@@ -32,3 +32,22 @@ function Trainers() {
       toast.error('Error fetching trainers');
     }
   };
+
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+    try {
+      if (isEditing) {
+        await api.put(`/Trainers/${selectedTrainer._id}`, formData);
+        toast.success('Trainer updated successfully');
+    } else {
+        await api.post('/Trainers', formData);
+        toast.success('Trainer added successfully');
+    }
+    fetchTrainers();
+    resetForm();
+  } catch (error) {
+    toast.error(isEditing ? 'Error updating trainer' : 'Error adding trainer');
+  }
+  };
+  
+}
