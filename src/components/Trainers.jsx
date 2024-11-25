@@ -234,4 +234,48 @@ function Trainers() {
         </div>
       )}
 
+      {/* Trainers Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredTrainers.map((trainer) => (
+          <div key={trainer.trainerId} className="card hover:shadow-lg">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h3 className="text-lg font-semibold">{trainer.fullName}</h3>
+                <p className="text-gray-600">{trainer.email}</p>
+              </div>
+              <div className="flex space-x-2">
+                <button
+                  onClick={() => handleView(trainer)}
+                  className="p-2 text-blue-600 hover:text-blue-800 transition-colors"
+                  title="View"
+                >
+                  <FaEye />
+                </button>
+                <button
+                  onClick={() => handleEdit(trainer)}
+                  className="p-2 text-green-600 hover:text-green-800 transition-colors"
+                  title="Edit"
+                >
+                  <FaEdit />
+                </button>
+                <button
+                  onClick={() => handleDelete(trainer.trainerId)}
+                  className="p-2 text-red-600 hover:text-red-800 transition-colors"
+                  title="Delete"
+                >
+                  <FaTrash />
+                </button>
+              </div>
+            </div>
+            <div className="text-sm text-gray-600 space-y-1">
+              <p>Speciality: {trainer.speciality}</p>
+              <p>Phone: {trainer.phoneNumber}</p>
+              <p>Certification: {trainer.certificationNumber}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
 }
