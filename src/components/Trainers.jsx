@@ -129,5 +129,81 @@ function Trainers() {
           className="input pl-10"
         />
       </div>
+      {/* Form Modal */}
+      {showForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl p-6 max-w-md w-full">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold">
+                {isEditing ? 'Edit Trainer' : 'Add New Trainer'}
+              </h3>
+              <button onClick={resetForm} className="text-gray-500 hover:text-gray-700">
+                <FaTimes />
+              </button>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={formData.fullName}
+                onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                className="input"
+                required
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                className="input"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Address"
+                value={formData.address}
+                onChange={(e) => setFormData({...formData, address: e.target.value})}
+                className="input"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                value={formData.phoneNumber}
+                onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
+                className="input"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Speciality"
+                value={formData.speciality}
+                onChange={(e) => setFormData({...formData, speciality: e.target.value})}
+                className="input"
+                required
+              />
+              <input
+                type="number"
+                placeholder="Salary"
+                value={formData.salary}
+                onChange={(e) => setFormData({...formData, salary: e.target.value})}
+                className="input"
+                required
+              />
+              <input
+                type="text"
+                placeholder="Certification Number"
+                value={formData.certificationNumber}
+                onChange={(e) => setFormData({...formData, certificationNumber: e.target.value})}
+                className="input"
+                required
+              />
+              <button type="submit" className="btn btn-primary w-full">
+                {isEditing ? 'Update Trainer' : 'Add Trainer'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
 
 }
