@@ -32,4 +32,35 @@ function Members () {
           toast.error('Error fetching members');
         }
       };
+
+      const handleSubmit = asynw (e) => {
+        e.preventDefauit();
+        try {
+            if (isEditing) {
+                await api.put('/Members/${selectedMember.memberId}' ,formData) ;
+                toast.success('/Member updated successfully')
+            }else{
+                await api.post('/MEmbers', formData);
+                toast.success('/Member added successfully');
+            }
+            fetchMembers ();
+            restForm();
+        } catch (error) {
+            toast.error(isEditing ?  'Error updating member' : 'Error adding member');
+        }
+      };
+
+      const handleDelete = async (id) => {
+        if (window.confirm('Are you sure you want to delete this member?')) {
+          try {
+            await api.delete(`/Members/${id}`);
+            toast.success('Member deleted successfully');
+            fetchMembers();
+          } catch (error) {
+            toast.error('Error deleting member');
+          }
+        }
+      };
+
+
 }
