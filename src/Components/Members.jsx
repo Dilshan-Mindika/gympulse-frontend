@@ -257,16 +257,12 @@ function Members () {
           </div>
         ))}
       </div>
-    </div>
-  );
+    
+  ;
 }
 
 export default Members;
 
 
 
-              
-
-
-    
-}
+        
