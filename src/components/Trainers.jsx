@@ -81,4 +81,19 @@ function Trainers() {
     setSelectedTrainer(trainer);
     setShowViewModal(true);
   };
+
+  const resetForm = () => {
+    setFormData({
+      fullName: '',
+      email: '',
+      address: '',
+      phoneNumber: '',
+      speciality: '',
+      salary: '',
+      certificationNumber: ''
+    });
+    setIsEditing(false);
+    setShowForm(false);
+    setSelectedTrainer(null);
+  }; 
 }
