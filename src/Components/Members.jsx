@@ -111,8 +111,8 @@ function Members () {
                 </button>
               </div>  
 
-
-              <div className="relative">
+              //* search Bar *// 
+            <div className="relative">
                 <FaSearch className = "absolute left-3 top-3 text-gray-400" />
                 <input
                 type = "text"
@@ -122,7 +122,78 @@ function Members () {
                 className="input p1-10"
                 />
               </div>
-              </div>
+            </div>
+
+              {/* Form */}
+            {showForm && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-xl p-6 max-w-md w-full">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-semibold">
+                {isEditing ? 'Edit Member' : 'Add New Member'}
+              </h3>
+              <button onClick={resetForm} className="text-gray-500 hover:text-gray-700">
+                <FaTimes />
+              </button>
+            </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={formData.fullName}
+                onChange={(e) => setFormData({...formData, fullName: e.target.value})}
+                className="input"
+              />
+              <input
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={(e) => setFormData({...formData, email: e.target.value})}
+                className="input"
+              />
+              <input
+                type="text"
+                placeholder="Address"
+                value={formData.address}
+                onChange={(e) => setFormData({...formData, address: e.target.value})}
+                className="input"
+              />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                value={formData.phoneNumber}
+                onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})}
+                className="input"
+              />
+              <input
+                type="text"
+                placeholder="Membership Type"
+                value={formData.memberShipType}
+                onChange={(e) => setFormData({...formData, memberShipType: e.target.value})}
+                className="input"
+              />
+              <input
+                type="date"
+                placeholder="Start Date"
+                value={formData.startDate}
+                onChange={(e) => setFormData({...formData, startDate: e.target.value})}
+                className="input"
+              />
+              <input
+                type="date"
+                placeholder="End Date"
+                value={formData.endDate}
+                onChange={(e) => setFormData({...formData, endDate: e.target.value})}
+                className="input"
+              />
+              <button type="submit" className="btn btn-primary w-full">
+                {isEditing ? 'Update Member' : 'Add Member'}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
 
 
               
