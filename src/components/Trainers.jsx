@@ -76,4 +76,9 @@ function Trainers() {
     setIsEditing(true);
     setShowForm(true);
   };
+
+  const handleView = (trainer) => {
+    setSelectedTrainer(trainer);
+    setShowViewModal(true);
+  };
 }
