@@ -62,5 +62,72 @@ function Members () {
         }
       };
 
+      const handleEdit = (member) => {
+        setSelectMember(member);
+        setFormData({
+            fullName: member.fullName,
+            email: member.email,
+            address: member.address,
+            phoneNumber:member.phoneNumber,
+            memberShpipType: member.memberShipType,
+            startDate: member.StartData?.split('T')[0] || '',
+            endDate:member.endDate?.split('T')[0] || '',
+         });
+         setIsEditing(true);
+         setShowForm(true);
+      };
 
+
+      const handleView = (member) => {
+        setSelectedMember(member);
+        setShowViewModal(true);
+      };
+
+      const resetForm = () => {
+        setFormData({
+            fullName: '',
+            email: '',
+            address: '',
+            phoneNumber: '',
+            memberShipType: '',
+            startDate: '',
+            endDate: '',
+        });
+
+        const filteredMembers = members.filter(member =>
+            member.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            member.email.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+
+          return (
+            <div className="space-y-6">
+              <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-bold text-gray-800">Members</h2>
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="btn btn-primary"
+                >
+                  Add New Member
+                </button>
+              </div>  
+
+
+              <div className="relative">
+                <FaSearch className = "absolute left-3 top-3 text-gray-400" />
+                <input
+                type = "text"
+                placeholder = "Search members..."
+                value = {searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="input p1-10"
+                />
+              </div>
+              </div>
+
+
+              
+
+
+        
+      }
 }
