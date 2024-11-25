@@ -62,6 +62,18 @@ function Trainers() {
     }   
   };
 
-  
-
+  const handleEdit = (trainer) => {
+    setSelectedTrainer(trainer);
+    setFormData({
+      fullName: trainer.fullName,
+      email: trainer.email,
+      address: trainer.address,
+      phoneNumber: trainer.phoneNumber,
+      speciality: trainer.speciality,
+      salary: trainer.salary,
+      certificationNumber: trainer.certificationNumber
+    });
+    setIsEditing(true);
+    setShowForm(true);
+  };
 }
