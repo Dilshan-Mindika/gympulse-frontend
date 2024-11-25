@@ -49,5 +49,19 @@ function Trainers() {
     toast.error(isEditing ? 'Error updating trainer' : 'Error adding trainer');
   }
   };
+
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this trainer?')) {
+      try {
+        await api.delete(`/Trainers/${id}`);
+        toast.success('Trainer deleted successfully');
+        fetchTrainers();
+      } catch (error) {
+        toast.error('Error deleting trainer');
+      }
+    }   
+  };
+
   
+
 }
