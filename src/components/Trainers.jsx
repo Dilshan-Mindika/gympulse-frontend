@@ -96,4 +96,10 @@ function Trainers() {
     setShowForm(false);
     setSelectedTrainer(null);
   }; 
+
+  const filteredTrainers = trainers.filter(trainer =>
+    trainer.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    trainer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    trainer.speciality.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 }
